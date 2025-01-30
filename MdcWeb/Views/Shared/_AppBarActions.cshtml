@@ -1,0 +1,15 @@
+﻿@model IEnumerable<TopAppBarAction>
+
+@foreach (var action in Model)
+{
+    if (!string.IsNullOrEmpty(action.SimpleText))
+    {
+        <h5 class="@action.SimpleTextCustomClass">
+            @action.SimpleText
+        </h5>
+    }
+    else
+    {
+        <vc:button model="action.Button"></vc:button>
+    }
+}

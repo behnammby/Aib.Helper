@@ -1,0 +1,11 @@
+﻿@model ButtonViewModel
+
+<button class="@Model.CustomClass mdc-icon-button"
+            aria-label="@Model.Label"
+                aria-hidden="true"
+                    aria-pressed="false"
+                        data-mdc-auto-init="IconButtonToggle"
+                            id="@Model.Id">
+    <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">@Model.Icon.IconOn</i>
+    <i class="material-icons mdc-icon-button__icon">@Model.Icon.Icon</i>
+</button>

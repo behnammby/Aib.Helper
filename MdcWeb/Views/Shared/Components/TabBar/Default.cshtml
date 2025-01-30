@@ -1,0 +1,23 @@
+@model TabBarViewModel
+
+<div class="mdc-tab-bar" role="tablist" data-mdc-auto-init="TabBar">
+  <div class="mdc-tab-scroller">
+    <div class="mdc-tab-scroller__scroll-area">
+      <div class="mdc-tab-scroller__scroll-content">
+          @foreach (var tab in Model.Tabs)
+          {
+            <a href="@tab.Action" class="mdc-tab @tab.GetActiveClass()" role="tab" aria-selected="true" tabindex="0">
+                <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">@tab.Icon</span>
+                    <span class="mdc-tab__text-label">@tab.Label</span>
+                </span>
+                <span class="mdc-tab-indicator @tab.GetActiveIndicatorClass()">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple"></span>
+            </a>   
+          }
+      </div>
+    </div>
+  </div>
+</div>

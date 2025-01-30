@@ -1,0 +1,8 @@
+﻿@model ButtonViewModel
+
+<button id="@Model.Id"
+            class="material-icons @Model.CustomClass mdc-icon-button" 
+                onclick="@Model.Action" 
+                    title="@Model.Label">
+    @Model.Icon.Icon
+</button>

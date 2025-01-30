@@ -1,0 +1,14 @@
+﻿@inherits SingleBase
+
+<ul @ref="ElementRef" class="mdc-list">
+    @foreach (var item in Items)
+    {
+        <li class="mdc-list-item">
+            @if (ShowGraphics)
+            {
+                <span class="material-icons mdc-list-item__graphic">@item.Graphic</span>
+            }
+            <span class="mdc-list-item__text">@item.Text</span>
+        </li>
+    }
+</ul>

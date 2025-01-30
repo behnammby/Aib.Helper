@@ -1,0 +1,8 @@
+﻿@model DrawerViewModel
+
+<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open @Model.GetElevation()"
+       data-mdc-auto-init="Drawer">
+    <div class="mdc-drawer__content">
+        <vc:list model="Model.GetList()" />
+    </div>
+</aside>

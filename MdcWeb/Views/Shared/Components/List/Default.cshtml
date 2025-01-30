@@ -1,0 +1,23 @@
+﻿@model ListViewModel
+
+<ul class="mdc-list @Model.CustomClass">
+    @if (Model.ShowDefaultItem) {
+         <li class="mdc-list-item" data-value="" aria-selected="true"></li>
+    }
+    @foreach (var group in Model.Groups)
+    {
+        var i = 0;
+        @foreach (var item in group.Items)
+        {
+            var tabIndex = string.Empty;
+            if (i == 0)
+            {
+                tabIndex = "tabindex=0";
+                i ++;
+            }
+            <li class="mdc-list-item @item.GetSelectedClass()" data-value="@item.Value" @tabIndex>
+                <span class="mdc-list-item__text">@item.Text</span>
+            </li>
+        }
+    }
+</ul>

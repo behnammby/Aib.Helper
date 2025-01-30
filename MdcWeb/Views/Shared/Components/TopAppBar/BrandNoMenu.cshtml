@@ -1,0 +1,10 @@
+﻿@model TopAppBarViewModel
+
+<header class="mdc-top-app-bar @Model.CustomClass @Model.GetDense() @Model.GetElevation()" 
+data-mdc-auto-init="TopAppBar">
+    <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <span class="@Model.Brand" title="@Model.Title"></span>
+        </section>
+    </div>
+</header>

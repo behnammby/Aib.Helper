@@ -1,0 +1,25 @@
+@model ListViewModel
+
+<div class="mdc-list-group @Model.CustomClass">
+    @{
+        var i = 0;
+    }
+    @foreach (var group in Model.Groups)
+    {
+        var tabIndex = string.Empty;
+        if (i == 0)
+        {
+            tabIndex = "tabindex=0";
+            i ++;
+        }
+        <h3 class="mdc-list-group__subheader">@group.Name</h3>
+        <ul class="mdc-list">
+            @foreach (var item in group.Items)
+            {
+                <li class="mdc-list-item @item.GetSelectedClass()" data-value="@item.Value" @tabIndex>
+                    <span class="mdc-list-item__text">@item.Text</span>
+                </li>
+            }
+        </ul>
+    }
+</div>

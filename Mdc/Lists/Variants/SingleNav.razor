@@ -1,0 +1,14 @@
+﻿@inherits SingleBase
+
+<nav class="mdc-list">
+    @foreach (var item in Items)
+    {
+        <a class="mdc-list-item" href="@item.Href">
+            @if (ShowGraphics)
+            {
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">@item.Graphic</i>
+            }
+            <span class="mdc-list-item__text">@item.Text</span>
+        </a>
+    }
+</nav>

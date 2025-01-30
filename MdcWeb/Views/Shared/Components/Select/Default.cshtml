@@ -1,0 +1,23 @@
+@model SelectViewModel
+
+@{
+    var listViewModel = new ListViewModel {
+        Variant = ListVariant.Default,
+        Groups = Model.Groups,
+        ShowDefaultItem = Model.ShowEmptyItem
+    };
+}
+
+<div class="mdc-select" data-class-id="@Model.CustomClassId" data-mdc-auto-init="Select">
+  <input type="hidden" name="@Model.InputName" value="@Model.GetSelectedValue()" />
+  <div class="mdc-select__anchor @Model.CustomClass">
+    <i class="mdc-select__dropdown-icon"></i>
+    <div class="mdc-select__selected-text"></div>
+    <span class="mdc-floating-label">@Model.Label</span>
+    <div class="mdc-line-ripple"></div>
+  </div>
+
+  <div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
+    <vc:list model="@listViewModel" />
+  </div>
+</div>

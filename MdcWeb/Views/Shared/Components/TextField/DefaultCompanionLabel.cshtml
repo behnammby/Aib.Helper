@@ -1,0 +1,57 @@
+﻿@model TextFieldViewModel
+
+<div class="mdc-companion">
+    <label class="mdc-companion-label" for="my-text-field">@(Model.Label):</label>
+<div class="mdc-text-field @Model.GetExtraClass() @Model.GetFullWidthClass() @Model.CustomClass" 
+data-mdc-auto-init="TextField">
+    @if (Model.Icon?.Variant == IconVariant.Leading)
+    {
+        <i class="material-icons mdc-text-field__icon"
+           tabindex="@Model.Icon.GetTabIndex()"
+           role="button"
+           onclick="@Model.Icon.Action">
+            @Model.Icon.Icon
+        </i>
+    }
+    else if (Model.Icon?.Variant == IconVariant.LeadingToggle)
+    {
+        var toggleButtonLeading = new ButtonViewModel
+        {
+            Icon = Model.Icon,
+            Variant = ButtonVariant.IconButtonToggle
+        };
+        <vc:button model="toggleButtonLeading" />
+    }
+    <input type="@Model.Type.ToString()"
+           id="@Model.Id"
+           name="@Model.Name"
+           class="mdc-text-field__input"
+           value="@Model.Value"
+           @Model.GetValidations() />
+    @if (Model.Icon?.Variant == IconVariant.Trailing)
+    {
+        <i class="material-icons mdc-text-field__icon"
+           tabindex="@Model.Icon.GetTabIndex()"
+           role="button"
+           onclick="@Model.Icon.Action">
+            @Model.Icon.Icon
+        </i>
+    }
+    else if (Model.Icon?.Variant == IconVariant.TrailingToggle)
+    {
+        var toggleButtonTrailing = new ButtonViewModel
+        {
+            Icon = Model.Icon,
+            Variant = ButtonVariant.IconButtonToggle
+        };
+        <vc:button model="toggleButtonTrailing" />
+    }
+    <div class="mdc-line-ripple"></div>
+</div>
+@if (!string.IsNullOrEmpty(Model.HelperText))
+{
+    <div class="mdc-text-field-helper-line">
+        <div class="mdc-text-field-helper-text">@Model.HelperText</div>
+    </div>
+}
+</div>

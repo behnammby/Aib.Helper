@@ -1,0 +1,16 @@
+﻿@model ButtonViewModel
+
+<button id="@Model.Id"
+            type="@Model.Type.ToString()"
+                class="mdc-button @Model.CustomClass @Model.GetExtraClass() @Model.GetDense()"
+                    onclick="@Model.Action">
+    @if (Model.Icon?.Variant == IconVariant.Leading)
+    {
+        <i class="material-icons mdc-button__icon" aria-hidden="true">@Model.Icon?.Icon</i>
+    }
+    <span class="mdc-button__label">@Model.Label</span>
+    @if (Model.Icon?.Variant == IconVariant.Trailing)
+    {
+        <i class="material-icons mdc-button__icon" aria-hidden="true">@Model.Icon?.Icon</i>
+    }
+</button>

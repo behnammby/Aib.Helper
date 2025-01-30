@@ -1,0 +1,44 @@
+﻿@model ListViewModel
+
+<nav class="mdc-list @Model.CustomClass" data-mdc-auto-init="List">
+    @{
+        var i = 0;
+    }
+    @foreach (var group in Model.Groups)
+    {
+        if (i++ > 0)
+        {
+            <hr class="mdc-list-divider">
+            <h6 class="mdc-list-group__subheader">@group.Name</h6>
+        }
+
+        @foreach (var item in group.Items)
+        {
+            var selected = "";
+            var ariaCurrent = "";
+            if (item.Selected)
+            {
+                selected = "mdc-list-item--activated";
+                ariaCurrent = "page";
+            }
+            if (item.RouteTagHelper != null) {
+                <a is-active-route asp-controller="@item.RouteTagHelper.Controller" asp-action="@item.RouteTagHelper.Action" class="mdc-list-item @selected" aria-current="@ariaCurrent">
+                    @if (group.ShowGraphics)
+                    {
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">@item.Graphic</i>
+                    }
+                    <span class="mdc-list-item__text">@item.Text</span>
+                </a>
+            }
+            else {
+                <a class="mdc-list-item @selected" href="@item.Href" aria-current="@ariaCurrent">
+                    @if (group.ShowGraphics)
+                    {
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">@item.Graphic</i>
+                    }
+                    <span class="mdc-list-item__text">@item.Text</span>
+                </a>
+            }
+        }
+    }
+</nav>

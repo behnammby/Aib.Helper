@@ -1,0 +1,19 @@
+@model RadioViewModel
+
+<div class="mdc-form-field" data-mdc-auto-init="FormField">
+  <div class="mdc-radio @Model.CustomClass" data-mdc-auto-init="Radio">
+    <input class="mdc-radio__native-control" 
+              type="radio" 
+                id="@Model.InputId" 
+                  name="@Model.InputName" 
+                    @Model.GetChecked() 
+                      value="@Model.Value.ToString()"
+                        onclick="@Model.Action">
+    <div class="mdc-radio__background">
+      <div class="mdc-radio__outer-circle"></div>
+      <div class="mdc-radio__inner-circle"></div>
+    </div>
+    <div class="mdc-radio__ripple"></div>
+  </div>
+  <label for="@Model.InputId">@Model.Label</label>
+</div>

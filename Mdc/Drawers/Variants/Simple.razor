@@ -1,0 +1,20 @@
+﻿@inherits DrawerBase
+@using Microsoft.JSInterop
+@using Behnammby.Mdc.Lists
+
+<aside @ref="ElementRef" class="mdc-drawer mdc-drawer--dismissible">
+    <div class="mdc-drawer__content">
+        <List Variant="ListVariants.SingleNav" Groups="Groups" />
+    </div>
+</aside>
+
+@code {
+    [Parameter]
+    public IEnumerable<Group> Groups { get; set; }
+
+    private void SomeClick()
+    {
+        Console.WriteLine("Some Click!");
+        JsInterop.InvokeVoidAsync("window.behnammby.mdc.drawer.test");
+    }
+}

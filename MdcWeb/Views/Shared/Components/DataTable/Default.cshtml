@@ -1,0 +1,29 @@
+@model DataTableViewModel
+
+<div class="mdc-data-table" data-mdc-auto-init="DataTable">
+  <table class="mdc-data-table__table" aria-label="@Model.Label">
+    <thead>
+      <tr class="mdc-data-table__header-row">
+        @foreach (var item in Model.Head.Cells)
+        {
+          <th class="mdc-data-table__header-cell @item.GetTypeClass()" role="columnheader" scope="col">
+            @item.Data
+          </th>    
+        }
+      </tr>
+    </thead>
+    <tbody class="mdc-data-table__content">
+      @foreach (var row in Model.Body)
+      {
+        <tr class="mdc-data-table__row">
+          @foreach (var cell in row.Cells)
+          {
+            <td class="mdc-data-table__cell @cell.GetTypeClass()">
+              @cell.Data
+            </td>    
+          }
+        </tr>   
+      }
+    </tbody>
+  </table>
+</div>

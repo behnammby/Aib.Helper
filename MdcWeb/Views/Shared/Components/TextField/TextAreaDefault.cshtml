@@ -1,0 +1,61 @@
+@model TextFieldViewModel
+
+<div class="mdc-text-field mdc-text-field--textarea @Model.GetExtraClass() @Model.GetFullWidthClass() @Model.CustomClass"
+    data-mdc-auto-init="TextField">
+    @if (Model.Icon?.Variant == IconVariant.Leading)
+    {
+        <i class="material-icons mdc-text-field__icon"
+           tabindex="-1"
+           role="button"
+           onclick="@Model.Icon.Action">
+            @Model.Icon.Icon
+        </i>
+    }
+    else if (Model.Icon?.Variant == IconVariant.LeadingToggle)
+    {
+        var toggleButtonLeading = new ButtonViewModel
+        {
+            Icon = Model.Icon,
+            Variant = ButtonVariant.IconButtonToggle
+        };
+        <vc:button model="toggleButtonLeading" />
+    }
+  <textarea id="@Model.Id" 
+  name="@Model.Name"
+  class="mdc-text-field__input" 
+  rows="@Model.TextAreaRows"
+  cols="@Model.TextAreaCols"
+  aria-label="@Model.GetPlaceHolder()"
+  @Model.GetValidations()>@Model.Value</textarea>
+  @if (Model.Icon?.Variant == IconVariant.Trailing)
+    {
+        <i class="material-icons mdc-text-field__icon"
+           tabindex="-1"
+           role="button"
+           onclick="@Model.Icon.Action">
+            @Model.Icon.Icon
+        </i>
+    }
+    else if (Model.Icon?.Variant == IconVariant.TrailingToggle)
+    {
+        var toggleButtonTrailing = new ButtonViewModel
+        {
+            Icon = Model.Icon,
+            Variant = ButtonVariant.IconButtonToggle
+        };
+        <vc:button model="toggleButtonTrailing" />
+    }
+  <div class="mdc-notched-outline">
+    <div class="mdc-notched-outline__leading"></div>
+    <div class="mdc-notched-outline__notch">
+      <label for="textarea" class="mdc-floating-label">@Model.Label</label>
+    </div>
+    <div class="mdc-notched-outline__trailing"></div>
+  </div>
+</div>
+@if (!string.IsNullOrEmpty(Model.HelperText))
+{
+    <div class="mdc-text-field-helper-line">
+        <div class="mdc-text-field-helper-text">@Model.HelperText</div>
+    </div>
+}
